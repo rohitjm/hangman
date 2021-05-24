@@ -1,0 +1,24 @@
+README.md 
+- the command to check the python version should be python3 --version 
+- I think you should also provide instructions on how to run the unit tests at the very bottom 
+- how come you have DOCS.md and README.md? Arent they the same thing
+- Change #Run the python file# to #Run the game#
+
+
+user_guess_unittest.py
+- rename this to main_test.py
+- Does importing unittest require you to package any dependencies?
+- Looks good but I would add alot more tests, basically ~2 tests for every method in your main file.
+- Would be a little more specific in the test names
+
+main.py
+- rename handle_game() to run_game(FKJ
+- use len(image) rather than hardcoding 6 for the # of guesses
+- rename image to images, since its an array
+- change valid_input to correct_input. An input can be valid but not correct
+- How come that call to handle_failure is commented out on line 65
+
+
+General Comments:
+- I would move all the static files(messages.txt, nouns.txt, etc) into a seperate folder and keep only the core files in the project root
+

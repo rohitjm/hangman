@@ -39,7 +39,7 @@ def display_codeword(current_remaining, word, length, letter=""):
     return " ".join(current_remaining)
 
 
-def handle_game():
+def run_game():
     chosen_word, length = random_word()
     remaining_letters = len(set(chosen_word))
     guessed = set()
@@ -47,11 +47,11 @@ def handle_game():
     current_remaining = ['_']*length
     print_menu(len(incorrect_guess), length)
 
-    while len(incorrect_guess) < 6:
+    while len(incorrect_guess) < len(image)-1:
         user_guessed = get_input(guessed)
-        valid_input = check_input(user_guessed, chosen_word)
+        correct_guess = check_input(user_guessed, chosen_word)
 
-        if valid_input:
+        if correct_guess:
             remaining_letters -= 1
             if remaining_letters < 1:
                 print("\nCorrect! You saved the person and earned a medal of honor!")
@@ -64,14 +64,14 @@ def handle_game():
             if len(incorrect_guess) == 6:
                 # handle_failure(current_remaining, user_guessed, incorrect_guess, chosen_word, length)
                 print(handle_image(len(incorrect_guess)))
-                print("\nSorry you lost. Better luck next time!")
+                print("\nSorry you are out of guesses. Better luck next time!")
                 print(f"\nThe codeword is: {chosen_word}.")
             else:
                 handle_failure(current_remaining, user_guessed, incorrect_guess, chosen_word, length)
 
     replay = input("\nWould you like to play again (Y/N)? ")
     if replay.upper() == 'Y':
-        handle_game()
+        run_game()
     else:
         print('\nGoodbye!')
         time.sleep(1)
@@ -118,4 +118,4 @@ def check_input(user_guessed, chosen_word):
 
 
 if __name__ == "__main__":
-    handle_game()
+    run_game()
